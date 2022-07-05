@@ -82,13 +82,19 @@
                   <th scope="col" class="sort" data-sort="name">Name</th>
                   <th scope="col" class="sort" data-sort="number">Number</th>
                   <th scope="col" class="sort" data-sort="email">Email</th>
+                  <th scope="col" class="sort" data-sort="gst">GST Image</th>
                   
+                  <th scope="col" class="sort" data-sort="doc">Doc Image</th>
+                  
+
                   <th scope="col" class="sort" data-sort="is_activate">Activation Status</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
               <tbody class="list">
-                <% for(var i=0; i < userData.length; i++) { %>
+                <% for(var i=0; i < userData.length; i++) { 
+                  
+                  %>
                 <tr>
                   <th scope="row">
                     <div class="media align-items-center">
@@ -115,6 +121,18 @@
                       <span class="completion mr-2"><%= (userData[i].is_activate=="1")?"Active":"Inactive" %></span>
                       
                     </div>
+                  </td>
+                  <td>
+                    <span class="badge badge-dot mr-4">
+                      
+                      <span class="status"><img src='http://65.0.85.130:3001/images/<%= userData[i].gst_filename %>' width="50" height="50"/></span>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="badge badge-dot mr-4">
+                      
+                      <span class="status"><img src='http://65.0.85.130:3001/images/<%= userData[i].gst_filename %>' width="50" height="50"/></span>
+                    </span>
                   </td>
                   <td class="text-right">
                     
