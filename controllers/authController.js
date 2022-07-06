@@ -17,6 +17,7 @@ const registerView = async (req, res, next) => {
     }
 }
 const handleLogin = (req, res, next) => {
+    if(req.body.email=="infoeducheck91@gmail.com" && req.body.password=="educheck@2022"){
     const obj = {
         email: req.body.email,
         password: req.body.password
@@ -24,6 +25,11 @@ const handleLogin = (req, res, next) => {
     console.log(obj);
     localstorage.setItem('user', JSON.stringify(obj));
     res.redirect('/');
+    }
+    else
+    {
+        res.render('login', {layout: 'loginlayout'},{err:"Invalid Credential"});
+    }
 }
 
 const logOut = (req, res, next) => {
