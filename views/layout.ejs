@@ -405,12 +405,62 @@
       function updateStatus(id,activateStatus){
         idValue=id;
         activateStatusValue=activateStatus;
+        launchModal();
+      }
+
+      function viewUser(obj,type){
+        console.log(type);
+        var obj= JSON.parse(obj)
+        //const objDetails = JSON.parse('{"foo" : "bar", "missedquotehere : "value" }');
+        //console.log(objDetails);
+        var html=``;
+        console.log(obj);
+        if(type=="userList"){
+          $(".modal-header").html("<h3>User Data</h3>");
+          Object.keys(obj).forEach(function(key) {
+
+html +=`<tr>
+                              <td>${key}</td>
+                              <td>${obj[key]}</td>
+                          </tr>
+                          `;
+                      });
+        }
+        if(type=="emergency"){
+          $(".modal-header").html("<h3>User Data</h3>");
+          for(let i=0;i<obj.length;i++){ 
+            html +=`<tr>
+                      <th>Name</th>
+                      <td>${obj[i].name}</td>
+                      
+                  </tr>
+                  <tr>
+                    <th>Mobile No</th>
+                      <td>${obj[i].mobile_no}</td>
+                      
+                  </tr>
+                  <tr>
+                    <th>Relation</th>
+                      <td>${obj[i].relation}</td>
+                      
+                  </tr>
+                  <tr><td colspan="3">&nbsp;</td></tr>
+
+                  `;
+              };
+          }
+        
+            document.getElementById('userDetail').innerHTML= html;
+      }
+
+      function launchModal(){
         $("#launchid").on("click", function() {
               $("exampleModal").modal('show');
           });
       }
-      var modalConfirm = function(callback) {
-          $("#saveid").on("click", function() {
+
+      function confirmModal(){
+        $("#saveid").on("click", function() {
               callback(true);
               $("#exampleModal").modal('hide');
           });
@@ -419,6 +469,10 @@
               callback(false);
               $("#exampleModal").modal('hide');
           });
+      }
+
+      var modalConfirm = function(callback) {
+        confirmModal(callback);
       };
 
       modalConfirm(function(confirm) {

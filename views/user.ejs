@@ -43,6 +43,35 @@
                 </div>
             </div>
         </div>
+
+
+
+        <div class="modal fade" id="myModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header modalheadertext">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <!--<h4 class="modal-title">Modal title</h4>-->
+              </div>
+              <div class="modal-body ">
+                <table>
+                    <thead>
+                    </thead>
+                    <tbody id="userDetail">
+                        
+                    </tbody>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+
+
+
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
       <div class="header-body">
@@ -94,7 +123,7 @@
               </thead>
               <tbody class="list">
                 <% for(var i=0; i < userData.length; i++) { 
-                  
+                  const {emergency_contact, ...userList} = userData[i];
                   %>
                 <tr>
                   <th scope="row">
@@ -147,6 +176,10 @@
                         class="btn btn-primary" 
                         data-toggle="modal" 
                         data-target="#exampleModal" onClick="updateStatus('<%=userData[i]._id%>','<%=userData[i].is_activate%>')" href="#">Change Status</a>
+                        
+                          <a class="dropdown-item" data-toggle="modal" href="#myModal" onClick="return viewUser('<%=JSON.stringify(userList)%>','userList')">View User</a>
+                          <a class="dropdown-item" data-toggle="modal" href="#myModal" onClick="return viewUser('<%= userData[i].emergency_contact%>','emergency')">Emergency Contact</a>
+
                         <a class="dropdown-item" href="#">Delete User</a>
                         
                       </div>
