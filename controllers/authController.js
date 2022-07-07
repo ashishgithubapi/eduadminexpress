@@ -17,7 +17,7 @@ const registerView = async (req, res, next) => {
     }
 }
 const handleLogin = (req, res, next) => {
-    if(req.body.email=="infoeducheck91@gmail.com" && req.body.password=="educheck@2022"){
+    if(req.body.email=="info@educheck91.com" && req.body.password=="educheck@2022"){
     const obj = {
         email: req.body.email,
         password: req.body.password
