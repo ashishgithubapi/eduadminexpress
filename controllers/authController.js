@@ -17,11 +17,14 @@ const registerView = async (req, res, next) => {
     }
 }
 const handleLogin = (req, res, next) => {
+    console.log('11');
     if(req.body.email=="info@educheck91.com" && req.body.password=="educheck@2022"){
     const obj = {
         email: req.body.email,
         password: req.body.password
     };
+    console.log('22');
+    
     console.log(obj);
     localstorage.setItem('user', JSON.stringify(obj));
     res.redirect('/');
